@@ -194,7 +194,17 @@ async function fetchData() {
       console.log("================================================");
 
       // Includes - Voir si les recettes contienne des recettes de  "Pizza"
-      const pizzaRecettes = data.includes("Pizza");
+      const categories = data.map((recette) => recette.category.toLowerCase());
+      const nameRecette = "Pizza";
+
+      let pizzaRecettes = false;
+
+      categories.forEach((category) => {
+        if (category === nameRecette.toLowerCase()) {
+          pizzaRecettes = true;
+        }
+      });
+
       console.log(
         "Les recettes contiennent des recettes de 'Pizza' :",
         pizzaRecettes
@@ -218,5 +228,3 @@ fetchData();
   console.log("================================================");
   console.log(posts.slice(0, 3)); // 3 premier posts
 })();
-
-
